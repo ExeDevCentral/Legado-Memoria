@@ -1,5 +1,6 @@
-import { Quote } from 'lucide-react';
-import { motion } from 'motion/react';
+import { useState, useEffect } from 'react';
+import { Quote, Star } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface Testimonial {
   name: string;
@@ -30,6 +31,17 @@ const testimonials: Testimonial[] = [
 ];
 
 export function Testimonials() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const t = testimonials[current];
+
   return (
     <div>
       <div className="text-center mb-12">
@@ -41,35 +53,59 @@ export function Testimonials() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {testimonials.map((testimonial, index) => (
+      <div className="max-w-2xl mx-auto">
+        <AnimatePresence mode="wait">
           <motion.div
-            key={index}
+            key={current}
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="bg-[var(--vintage-cream)] p-6 rounded border border-[var(--vintage-bronze)]/20 relative shadow-sm"
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="bg-[var(--vintage-cream)] p-8 md:p-10 rounded-lg border border-[var(--vintage-bronze)]/20 relative shadow-sm text-center"
           >
-            <Quote className="w-8 h-8 text-[var(--vintage-bronze)]/20 mb-4" />
-
-            <p className="text-[var(--vintage-dark)]/90 mb-6 italic text-sm leading-relaxed">
-              "{testimonial.quote}"
+            <Quote className="w-10 h-10 text-[var(--vintage-bronze)]/20 mb-4 mx-auto" />
+            <p className="text-[var(--vintage-dark)]/90 mb-6 italic text-base leading-relaxed">
+              &ldquo;{t.quote}&rdquo;
             </p>
-
+            <div className="flex justify-center gap-1 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.1 * i }}
+                >
+                  <Star className="w-4 h-4 text-[var(--vintage-gold)]" fill="currentColor" />
+                </motion.div>
+              ))}
+            </div>
             <div className="border-t border-[var(--vintage-bronze)]/20 pt-4">
               <h4 className="text-[var(--vintage-dark)] font-semibold text-sm">
-                {testimonial.name}
+                {t.name}
               </h4>
               <p className="text-xs text-[var(--vintage-metal)]">
-                {testimonial.role}
+                {t.role}
               </p>
               <p className="text-[10px] text-[var(--vintage-bronze)] mt-2 font-typewriter tracking-wider uppercase font-semibold">
-                {testimonial.piece}
+                {t.piece}
               </p>
             </div>
           </motion.div>
-        ))}
+        </AnimatePresence>
+
+        <div className="flex justify-center gap-2 mt-6">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                index === current
+                  ? 'w-8 bg-[var(--vintage-bronze)]'
+                  : 'w-2 bg-[var(--vintage-bronze)]/30'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

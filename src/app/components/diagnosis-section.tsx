@@ -1,5 +1,8 @@
 import { CheckCircle2, AlertCircle, Sparkles, Star, Anchor } from 'lucide-react';
 import { motion } from 'motion/react';
+import { TypewriterText } from './effects/TypewriterText';
+import { useEffect, useState } from 'react';
+import confetti from 'canvas-confetti';
 
 interface DiagnosisItem {
   title: string;
@@ -12,6 +15,26 @@ interface DiagnosisSectionProps {
 }
 
 export function DiagnosisSection({ hasImages }: DiagnosisSectionProps) {
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [scanning, setScanning] = useState(false);
+
+  useEffect(() => {
+    if (hasImages) {
+      setScanning(true);
+      const scanTimer = setTimeout(() => {
+        setScanning(false);
+        setShowConfetti(true);
+        confetti({
+          particleCount: 80,
+          spread: 60,
+          origin: { y: 0.6 },
+          colors: ['#c9a961', '#b89968', '#2c2416', '#fdfbf7'],
+        });
+      }, 2000);
+      return () => clearTimeout(scanTimer);
+    }
+  }, [hasImages]);
+
   const mockDiagnosis: DiagnosisItem[] = [
     {
       title: 'Engaste y Garras de Seguridad',
@@ -48,51 +71,32 @@ export function DiagnosisSection({ hasImages }: DiagnosisSectionProps) {
           Tasación & Diagnóstico Online
         </h3>
         <p className="text-[var(--vintage-metal)] max-w-md mx-auto text-sm">
-          Sube fotografías en alta definición de tu joya o antigüedad para que nuestros orfebres realicen un análisis preliminar de su estado, autenticidad y potencial de restauración.
+          Sube fotografías en alta definición de tu joya, antigüedad o máquina de escribir para que nuestros artesanos realicen un análisis preliminar de su estado y potencial de restauración.
         </p>
       </div>
     );
   }
 
-  const getSeverityConfig = (severity: string) => {
-    switch (severity) {
-      case 'good':
-        return {
-          icon: CheckCircle2,
-          color: 'text-green-800',
-          bg: 'bg-green-50/70',
-          border: 'border-green-200'
-        };
-      case 'warning':
-        return {
-          icon: AlertCircle,
-          color: 'text-amber-800',
-          bg: 'bg-amber-50/70',
-          border: 'border-amber-200'
-        };
-      case 'repair':
-        return {
-          icon: Anchor,
-          color: 'text-[var(--vintage-bronze)]',
-          bg: 'bg-[var(--vintage-sepia)]/20',
-          border: 'border-[var(--vintage-bronze)]/50'
-        };
-      default:
-        return {
-          icon: AlertCircle,
-          color: 'text-[var(--vintage-metal)]',
-          bg: 'bg-[var(--vintage-cream)]',
-          border: 'border-[var(--vintage-bronze)]'
-        };
-    }
-  };
-
   return (
     <div>
+      {scanning && (
+        <div className="mb-8 relative overflow-hidden rounded-lg h-2 bg-[var(--vintage-sepia)]/30">
+          <motion.div
+            className="h-full bg-[var(--vintage-gold)]"
+            initial={{ x: '-100%' }}
+            animate={{ x: '100%' }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+          />
+        </div>
+      )}
+
       <div className="text-center mb-8">
-        <h3 className="mb-2 text-[var(--vintage-dark)] text-2xl font-medium">
-          Análisis de Tasación Preliminar
-        </h3>
+        <TypewriterText
+          text="Análisis de Tasación Preliminar"
+          speed={30}
+          as="h3"
+          className="mb-2 text-[var(--vintage-dark)] text-2xl font-medium"
+        />
         <p className="text-[var(--vintage-metal)] text-sm">
           Basado en el análisis visual de las fotografías adjuntas
         </p>
@@ -100,7 +104,18 @@ export function DiagnosisSection({ hasImages }: DiagnosisSectionProps) {
 
       <div className="space-y-4">
         {mockDiagnosis.map((item, index) => {
-          const config = getSeverityConfig(item.severity);
+          const config = (() => {
+            switch (item.severity) {
+              case 'good':
+                return { icon: CheckCircle2, color: 'text-green-800', bg: 'bg-green-50/70', border: 'border-green-200' };
+              case 'warning':
+                return { icon: AlertCircle, color: 'text-amber-800', bg: 'bg-amber-50/70', border: 'border-amber-200' };
+              case 'repair':
+                return { icon: Anchor, color: 'text-[var(--vintage-bronze)]', bg: 'bg-[var(--vintage-sepia)]/20', border: 'border-[var(--vintage-bronze)]/50' };
+              default:
+                return { icon: AlertCircle, color: 'text-[var(--vintage-metal)]', bg: 'bg-[var(--vintage-cream)]', border: 'border-[var(--vintage-bronze)]' };
+            }
+          })();
           const Icon = config.icon;
 
           return (
