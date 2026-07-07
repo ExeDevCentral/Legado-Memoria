@@ -1,44 +1,10 @@
 import { motion } from 'motion/react';
-import { Star, ShieldCheck, Gem, Award, Truck, HeartHandshake, History } from 'lucide-react';
+import { Star, ShieldCheck, Gem, Award, Truck, HeartHandshake, History, type LucideIcon } from 'lucide-react';
+import { guarantees } from '../data/guarantees';
 
-const guarantees = [
-  {
-    name: 'Oro & Plata Certificados',
-    icon: Gem,
-    highlight: true,
-    description: 'Garantizamos la pureza y ley de los metales nobles (Oro 18k y Plata 925) de cada pieza.'
-  },
-  {
-    name: 'Historia Documentada',
-    icon: History,
-    highlight: false,
-    description: 'Cada antigüedad incluye una ficha sobre su procedencia histórica, procedencia y época.'
-  },
-  {
-    name: 'Orfebrería Artesanal',
-    icon: Award,
-    highlight: false,
-    description: 'Manufactura hecha a mano, rescatando técnicas y acabados de la joyería clásica.'
-  },
-  {
-    name: 'Envíos Asegurados',
-    icon: Truck,
-    highlight: false,
-    description: 'Despachos a todo el país con seguro de transporte integrado para resguardar tu compra.'
-  },
-  {
-    name: 'Ajuste de Talla Gratis',
-    icon: Star,
-    highlight: false,
-    description: 'En anillos seleccionados, el primer ajuste de medida es totalmente gratuito.'
-  },
-  {
-    name: 'Compra Protegida',
-    icon: ShieldCheck,
-    highlight: false,
-    description: 'Pasarela segura de transacciones y cambios garantizados en un plazo de 15 días.'
-  }
-];
+const iconMap: Record<string, LucideIcon> = {
+  Gem, History, Award, Truck, Star, ShieldCheck,
+};
 
 export function BrandsSection() {
   return (
@@ -54,7 +20,8 @@ export function BrandsSection() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {guarantees.map((item, index) => {
-          const Icon = item.icon;
+          const Icon = iconMap[item.icon];
+          if (!Icon) return null;
           return (
             <motion.div
               key={item.name}
