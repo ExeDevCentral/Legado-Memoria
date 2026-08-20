@@ -1,13 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Quote, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { testimonials } from '../data/testimonials';
 
 export function Testimonials() {
   const [current, setCurrent] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isVisible = useRef(false);
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible.current = entry.isIntersecting },
+      { threshold: 0 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
+      if (!isVisible.current) return
       setCurrent((prev) => (prev + 1) % testimonials.length);
     }, 8000);
     return () => clearInterval(interval);
@@ -16,7 +30,7 @@ export function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <div>
+    <div ref={sectionRef}>
       <div className="text-center mb-12">
         <h2 className="mb-2 text-[var(--vintage-dark)] text-3xl md:text-4xl font-medium">
           Testimonios de Clientes

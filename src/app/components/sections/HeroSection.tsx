@@ -4,16 +4,29 @@ import { ParticleField } from '../effects/ParticleField'
 import { TypewriterText } from '../effects/TypewriterText'
 import { AnimatedCounter } from '../effects/AnimatedCounter'
 import { MagneticButton } from '../effects/MagneticButton'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { buildWhatsAppUrl } from '../../utils/whatsapp'
 import { BUSINESS_CONFIG } from '../../config/business'
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
+  const decorationsRef = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(true)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.08])
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+
+  useEffect(() => {
+    const el = decorationsRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const scrollToCatalog = () => {
     document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' })
@@ -29,8 +42,14 @@ export function HeroSection() {
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY, scale: bgScale }}>
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--vintage-dark)]/80 via-[var(--vintage-dark)]/60 to-[var(--vintage-paper)] z-10" />
         <motion.img
-          src="https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=1920"
+          src="https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=1920&auto=format"
+          srcSet="https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=480&auto=format 480w, https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=800&auto=format 800w, https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=1200&auto=format 1200w, https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=1920&auto=format 1920w"
+          sizes="100vw"
           alt="Taller artesanal"
+          width={1920}
+          height={1080}
+          loading="eager"
+          decoding="async"
           className="w-full h-full object-cover"
           style={{ scale: bgScale }}
         />
@@ -38,17 +57,21 @@ export function HeroSection() {
 
       <ParticleField />
 
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        <motion.div
-          className="absolute top-20 left-10 w-40 h-40 border-2 border-[var(--vintage-gold)]/15 rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-        />
-        <motion.div
-          className="absolute bottom-40 right-20 w-64 h-64 border border-[var(--vintage-bronze)]/10"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
-        />
+      <div ref={decorationsRef} className="absolute inset-0 z-10 pointer-events-none">
+        {isVisible && (
+          <>
+            <motion.div
+              className="absolute top-20 left-10 w-40 h-40 border-2 border-[var(--vintage-gold)]/15 rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
+            />
+            <motion.div
+              className="absolute bottom-40 right-20 w-64 h-64 border border-[var(--vintage-bronze)]/10"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
+            />
+          </>
+        )}
       </div>
 
       <motion.div style={{ opacity }} className="relative z-20 max-w-4xl mx-auto px-6 text-center">

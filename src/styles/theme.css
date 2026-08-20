@@ -1,89 +1,46 @@
-@custom-variant dark (&:is(.dark *));
-
 :root {
-  --font-size: 16px;
-  --background: #f5f1e8;
-  --foreground: #2c2416;
-  --card: #fdfbf7;
-  --card-foreground: #2c2416;
-  --popover: #fdfbf7;
-  --popover-foreground: #2c2416;
-  --primary: #2c2416;
-  --primary-foreground: #fdfbf7;
-  --secondary: #c9a961;
-  --secondary-foreground: #2c2416;
-  --muted: #e8dfc9;
-  --muted-foreground: #6b5d48;
-  --accent: #b89968;
-  --accent-foreground: #2c2416;
-  --destructive: #8b4513;
-  --destructive-foreground: #fdfbf7;
-  --border: rgba(44, 36, 22, 0.15);
+  --font-size: 17px;
+  --background: #FAF7F2;
+  --foreground: #1C1917;
+  --card: #FFFFFF;
+  --card-foreground: #1C1917;
+  --popover: #FFFFFF;
+  --popover-foreground: #1C1917;
+  --primary: #1C1917;
+  --primary-foreground: #FAF7F2;
+  --secondary: #9E7B3B;
+  --secondary-foreground: #FFFFFF;
+  --muted: #EFE8DB;
+  --muted-foreground: #57534E;
+  --accent: #856428;
+  --accent-foreground: #FFFFFF;
+  --destructive: #6D2128;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(41, 37, 36, 0.12);
   --input: transparent;
-  --input-background: #fdfbf7;
-  --switch-background: #c9a961;
+  --input-background: #FFFFFF;
+  --switch-background: #9E7B3B;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #c9a961;
-  --chart-1: #c9a961;
-  --chart-2: #8b7355;
-  --chart-3: #a68a64;
-  --chart-4: #d4b896;
-  --chart-5: #6b5d48;
+  --ring: #9E7B3B;
+  --chart-1: #9E7B3B;
+  --chart-2: #6D2128;
+  --chart-3: #57534E;
+  --chart-4: #D8C7A5;
+  --chart-5: #292524;
   --radius: 0.25rem;
-  --sidebar: #fdfbf7;
-  --sidebar-foreground: #2c2416;
-  --sidebar-primary: #2c2416;
-  --sidebar-primary-foreground: #fdfbf7;
-  --sidebar-accent: #e8dfc9;
-  --sidebar-accent-foreground: #2c2416;
-  --sidebar-border: rgba(44, 36, 22, 0.15);
-  --sidebar-ring: #c9a961;
-  --vintage-cream: #fdfbf7;
-  --vintage-paper: #f5f1e8;
-  --vintage-sepia: #d4b896;
-  --vintage-bronze: #b89968;
-  --vintage-gold: #c9a961;
-  --vintage-metal: #8b7355;
-  --vintage-dark: #2c2416;
-  --vintage-shadow: rgba(44, 36, 22, 0.1);
-}
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 72.572);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* Vintage & Museum Color Palette */
+  --vintage-cream: #FAF7F2;
+  --vintage-paper: #F4EFE6;
+  --vintage-sepia: #78716C;
+  --vintage-bronze: #9E7B3B;
+  --vintage-gold: #B5914A;
+  --vintage-metal: #57534E;
+  --vintage-burgundy: #6D2128;
+  --vintage-dark: #1C1917;
+  --vintage-dark-card: #26221E;
+  --vintage-shadow: rgba(28, 25, 23, 0.08);
 }
 
 @theme inline {
@@ -113,27 +70,23 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-size: var(--font-size);
+    line-height: 1.65;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 
   html {
@@ -141,71 +94,27 @@
     scroll-behavior: smooth;
   }
 
-  h1 {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', 'Libre Baskerville', Georgia, serif;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
   }
 
-  h2 {
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  h3 {
-    font-size: var(--text-lg);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  h4 {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  label {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  button {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  input {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-normal);
-    line-height: 1.5;
+  p {
+    font-family: 'Cormorant Garamond', 'Libre Baskerville', Georgia, serif;
   }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-@keyframes kenBurns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.08); }
-}
-
-@keyframes typeCursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes scanLine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes keyPress {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(2px); }
-  100% { transform: translateY(0); }
+/* Clases de impresión de ficha museográfica */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
 }

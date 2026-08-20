@@ -1,9 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap');
-
 body {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', 'Libre Baskerville', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-serif-classic {
+  font-family: 'Libre Baskerville', Georgia, serif;
 }
 
 .font-typewriter {
   font-family: 'Special Elite', 'Courier New', monospace;
+}
+
+/* ─── Soporte de Accesibilidad Senior (+80) ─── */
+html[data-font-size="medium"] {
+  --font-size: 17px;
+  --catalog-text-scale: 1;
+}
+
+html[data-font-size="large"] {
+  --font-size: 19px;
+  --catalog-text-scale: 1.12;
+}
+
+html[data-font-size="xlarge"] {
+  --font-size: 21px;
+  --catalog-text-scale: 1.25;
+}
+
+html[data-high-contrast="true"] {
+  --background: #FFFDF9;
+  --foreground: #000000;
+  --card: #FFFFFF;
+  --card-foreground: #000000;
+  --border: rgba(0, 0, 0, 0.35);
+  --muted-foreground: #262626;
+  --secondary: #7A5816;
+}
+
+/* Clases utilitarias clásicas */
+.classic-double-border {
+  border: 1px solid var(--vintage-bronze, #9E7B3B);
+  box-shadow: inset 0 0 0 3px #FAF7F2, inset 0 0 0 4px rgba(158, 123, 59, 0.35);
+}
+
+.heritage-card-frame {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(41, 37, 36, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.heritage-card-frame:hover {
+  border-color: rgba(158, 123, 59, 0.45);
+  box-shadow: 0 12px 32px -8px rgba(41, 37, 36, 0.08);
 }

@@ -50,8 +50,14 @@ export function BeforeAfterSlider({ before, after, beforeLabel = 'Antes', afterL
       onTouchEnd={handleMouseUp}
     >
       <img
-        src={after}
+        src={`${after}?auto=format`}
+        srcSet={`${after}?w=400&auto=format 400w, ${after}?w=800&auto=format 800w`}
+        sizes="(max-width: 768px) 100vw, 50vw"
         alt={afterLabel}
+        width={800}
+        height={600}
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div
@@ -59,8 +65,14 @@ export function BeforeAfterSlider({ before, after, beforeLabel = 'Antes', afterL
         style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
       >
         <img
-          src={before}
+          src={`${before}?auto=format`}
+          srcSet={`${before}?w=400&auto=format 400w, ${before}?w=800&auto=format 800w`}
+          sizes="(max-width: 768px) 100vw, 50vw"
           alt={beforeLabel}
+          width={800}
+          height={600}
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>

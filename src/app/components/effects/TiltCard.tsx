@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from 'react'
+import { useRef, useState, useEffect, type ReactNode } from 'react'
 import { motion, useMotionValue, useSpring } from 'motion/react'
 
 interface TiltCardProps {
@@ -8,12 +8,18 @@ interface TiltCardProps {
 
 export function TiltCard({ children, className = '' }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null)
+  const [isTouch, setIsTouch] = useState(false)
   const rotateX = useMotionValue(0)
   const rotateY = useMotionValue(0)
   const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 20 })
   const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 20 })
 
+  useEffect(() => {
+    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  }, [])
+
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (isTouch) return
     const rect = ref.current?.getBoundingClientRect()
     if (!rect) return
     const centerX = rect.left + rect.width / 2
@@ -27,6 +33,10 @@ export function TiltCard({ children, className = '' }: TiltCardProps) {
   const handleMouseLeave = () => {
     rotateX.set(0)
     rotateY.set(0)
+  }
+
+  if (isTouch) {
+    return <div className={className}>{children}</div>
   }
 
   return (

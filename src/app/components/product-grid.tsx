@@ -29,7 +29,7 @@ export function ProductGrid() {
 
   const handleWhatsApp = (product: { name: string; description: string }) => {
     const message = `¡Hola! Me interesa "${product.name}" - ${product.description}. ¿Me puedes dar más información?`;
-    window.open(buildWhatsAppUrl(BUSINESS_CONFIG.phone, message), '_blank');
+    window.open(buildWhatsAppUrl(BUSINESS_CONFIG.phone, message), '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -106,8 +106,14 @@ export function ProductGrid() {
                   >
                     <div className="relative aspect-square overflow-hidden bg-neutral-100">
                       <img
-                        src={product.image}
+                        src={`${product.image}?auto=format`}
+                        srcSet={`${product.image}?w=300&auto=format 300w, ${product.image}?w=600&auto=format 600w`}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         alt={product.name}
+                        width={600}
+                        height={600}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       {product.badge && (

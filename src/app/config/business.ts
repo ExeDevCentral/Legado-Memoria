@@ -1,7 +1,7 @@
 export const BUSINESS_CONFIG = {
   name: 'Taller Artesanal — GAM',
   phone: '56954095465',
-  email: 'Gemacaqueo@gmail.com',
+  email: 'lucia.taller@gmail.com',
   address: "Locales Artesanales junto al GAM, Av. Libertador Bernardo O'Higgins 227, Santiago Centro",
   messages: {
     general: '¡Hola! Estoy interesado en conocer más sobre sus productos y servicios.',

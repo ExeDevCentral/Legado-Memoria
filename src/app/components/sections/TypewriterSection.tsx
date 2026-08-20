@@ -34,8 +34,14 @@ export function TypewriterSection() {
           >
             <div className="aspect-[4/3] rounded-lg overflow-hidden border-2 border-[var(--vintage-gold)]/20 shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=800"
+                src="https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=800&auto=format"
+                srcSet="https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=400&auto=format 400w, https://images.unsplash.com/photo-1641985899378-990ae6eb3c11?w=800&auto=format 800w"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 alt="Máquina de escribir"
+                width={800}
+                height={600}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

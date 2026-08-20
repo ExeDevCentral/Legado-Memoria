@@ -17,7 +17,7 @@ export function WhatsAppButton({ phoneNumber, message = "¡Hola! Estoy interesad
       colors: ['#c9a961', '#b89968', '#2c2416'],
     });
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank', 'noopener,noreferrer');
   }, [phoneNumber, message]);
 
   return (
