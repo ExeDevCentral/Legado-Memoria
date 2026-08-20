@@ -1,9 +1,9 @@
 export interface ArchiveItem {
   id: string;
-  code: string; // e.g. "CPH-LIB-1646-01"
+  code: string;
   title: string;
   subtitle?: string;
-  category: 'libros' | 'arte' | 'manuscritos' | 'maquinaria';
+  category: 'jarrones' | 'libros' | 'arte' | 'manuscritos' | 'maquinaria';
   categoryLabel: string;
   century: 'Siglo XVII' | 'Siglo XVIII' | 'Siglo XIX' | 'Siglo XX';
   year: string;
@@ -22,17 +22,105 @@ export interface ArchiveItem {
   };
   audioNarrative?: string;
   tags: string[];
+  featured?: boolean;
 }
 
 export const ARCHIVE_ITEMS: ArchiveItem[] = [
+  // ─── JARRONES Y CERÁMICA HISTÓRICA ──────────────────────────
+  {
+    id: 'jar-001',
+    code: 'CPH-CER-1720-01',
+    title: 'Urna Barroca & Jarrón Colonial con Pan de Oro',
+    subtitle: 'Porcelana policromada con molduras en oro fino de 22k y escenas mitológicas clásicas',
+    category: 'jarrones',
+    categoryLabel: 'Jarrones & Cerámica de Época',
+    century: 'Siglo XVIII',
+    year: 'c. 1720–1750',
+    author: 'Taller Virreinal / Manufactura Real',
+    provenance: 'Antigua hacienda señorial del Valle de Aconcagua; resguardado por familia de la aristocracia chilena.',
+    dimensions: '68.0 × 38.0 × 26.0 cm | Peso: 9.4 kg',
+    materials: 'Porcelana dura cocida a alta temperatura, esmaltes al fuego al óxido de cobalto, aplicaciones de bronce ormolu y dorados al mercurio.',
+    conservationState: 'Cuerpo cerámico 100% íntegro, sin fracturas ni fisuras térmicas. Limpieza de pátina oxidada en molduras doradas.',
+    conservationBadge: 'Excelente',
+    description: 'Magnífica pieza ornamental de gran valor decorativo e histórico. Representa en su cartela central una escena alegórica del triunfo de las artes rodeada de festones y mascarones dorados.',
+    historicalContext: 'Importada a través de las rutas comerciales del Virreinato para presidir los salones de honor de las familias fundacionales de Chile.',
+    destinationInstitution: 'Museo Nacional de Bellas Artes / Museo de Artes Decorativas de Santiago',
+    images: {
+      main: '/images/antique-vase.jpg',
+      details: [
+        'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=1200&auto=format',
+        'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200&auto=format',
+      ]
+    },
+    audioNarrative: 'Esta urna barroca con pan de oro representa la suntuosidad de los salones coloniales chilenos del siglo dieciocho, conservada con su policromía original intacta.',
+    tags: ['Jarrones', 'Cerámica', 'Porcelana', 'Barroco', 'Pan de Oro', 'Siglo XVIII'],
+    featured: true
+  },
+  {
+    id: 'jar-002',
+    code: 'CPH-CER-1785-02',
+    title: 'Tibor Colonial de Talavera con Escudo Nobiliario',
+    subtitle: 'Cerámica mayólica esmaltada en blanco y azul cobalto con tapa piramidal',
+    category: 'jarrones',
+    categoryLabel: 'Jarrones & Cerámica de Época',
+    century: 'Siglo XVIII',
+    year: '1785',
+    author: 'Maestros Cerámicos de la Nueva España (Puebla / Importación Virreinal)',
+    provenance: 'Residencia de los Marqueses de Larraín en Santiago; donado en custodia en 1974.',
+    dimensions: '54.0 × 32.0 cm',
+    materials: 'Arcilla decantada, vidriado estannífero, óxido de cobalto y manganeso.',
+    conservationState: 'Esmalte brillante sin craquelado activo. Asentamiento en base con fieltro de conservación libre de ácidos.',
+    conservationBadge: 'Excelente',
+    description: 'Ejemplar cimero de la cerámica virreinal que llegó a Chile a fines del siglo XVIII. El motivo central exhibe el escudo de armas familiar entre motivos de grutescos y follaje andino.',
+    historicalContext: 'Muestra fehaciente del floreciente intercambio cultural y artístico entre los virreinatos americanos y el Reino de Chile.',
+    destinationInstitution: 'Museo Histórico Nacional — Colección de Artes y Oficios Coloniales',
+    images: {
+      main: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=1200&auto=format',
+      details: [
+        '/images/antique-vase.jpg',
+      ]
+    },
+    audioNarrative: 'El tibor de Talavera del siglo dieciocho sintetiza la tradición cerámica hispanoamericana con su inconfundible azul cobalto sobre blanco estannífero.',
+    tags: ['Talavera', 'Tibor', 'Mayólica', 'Colonia', 'Cobalto']
+  },
+
   // ─── LIBROS ANTIGUOS Y PRIMERAS EDICIONES ──────────────────
+  {
+    id: 'lib-000',
+    code: 'CPH-LIB-1600-00',
+    title: 'Misal Iluminado & Códice en Latín con Pan de Oro',
+    subtitle: 'Manuscrito litúrgico sobre vitela con capitulares historadas y orlas de acanto en oro batido',
+    category: 'libros',
+    categoryLabel: 'Libros Raros & Manuscritos Iluminados',
+    century: 'Siglo XVII',
+    year: 'c. 1600–1620',
+    author: 'Scriptorium Conventual Franciscano / Taller Romano',
+    provenance: 'Antiguo fondo sacro del Convento Máximo de San Francisco de Santiago de Chile.',
+    dimensions: '36.0 × 26.0 × 7.5 cm (Gran Códice en Folio)',
+    materials: 'Pergamino de vitela purísima, pan de oro al agua pulido con ágata, tintas minerales de lapislázuli y bermellón, encuadernación en tabla de roble forrada en piel repujada con cantoneras y broches de latón forjado.',
+    conservationState: 'Pigmentos estables y luminosos. Folios desinsectados y estabilizados con microcápsulas de humedad controlada.',
+    conservationBadge: 'Excelente',
+    description: 'Incomparable tesoro del arte del libro antiguo. Cada página presenta letras capitulares miniadas en pan de oro bruñido y ricas orlas vegetales entrelazadas.',
+    historicalContext: 'Utilizado en las ceremonias solemnes de la Real Audiencia y la Catedral de Santiago durante el Chile colonial temprano.',
+    destinationInstitution: 'Biblioteca Nacional de Chile — Sala Medina / Archivo Histórico Sacro',
+    images: {
+      main: '/images/ancient-book.jpg',
+      details: [
+        'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&auto=format',
+        'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&auto=format',
+      ]
+    },
+    audioNarrative: 'Este códice iluminado de comienzos del siglo diecisiete refleja el esplendor del arte del libro sacro, con pan de oro brillante y lapislázuli de intacta pureza.',
+    tags: ['Códice', 'Iluminado', 'Pan de Oro', 'Siglo XVII', 'Incunable'],
+    featured: true
+  },
   {
     id: 'lib-001',
     code: 'CPH-LIB-1646-01',
     title: 'Histórica Relación del Reyno de Chile',
     subtitle: 'Edición Príncipe de Roma con grabados xilográficos y calcográficos',
     category: 'libros',
-    categoryLabel: 'Libros Raros & Primeras Ediciones',
+    categoryLabel: 'Libros Raros & Manuscritos Iluminados',
     century: 'Siglo XVII',
     year: '1646',
     author: 'P. Alonso de Ovalle, S.J.',
@@ -47,8 +135,8 @@ export const ARCHIVE_ITEMS: ArchiveItem[] = [
     images: {
       main: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&auto=format',
       details: [
+        '/images/ancient-book.jpg',
         'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&auto=format',
-        'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200&auto=format',
       ]
     },
     audioNarrative: 'La Histórica Relación del Padre Ovalle constituye el primer monumento bibliográfico de Chile. Esta edición de 1646 conserva intacto su mapa desplegable y sus ricas xilografías.',
@@ -60,7 +148,7 @@ export const ARCHIVE_ITEMS: ArchiveItem[] = [
     title: 'La Araucana de D. Alonso de Ercilla y Zúñiga',
     subtitle: 'Edición ilustrada de la Real Imprenta de D. Antonio de Sancha',
     category: 'libros',
-    categoryLabel: 'Libros Raros & Primeras Ediciones',
+    categoryLabel: 'Libros Raros & Manuscritos Iluminados',
     century: 'Siglo XVIII',
     year: '1776',
     author: 'Alonso de Ercilla y Zúñiga (Ed. Sancha)',
@@ -87,7 +175,7 @@ export const ARCHIVE_ITEMS: ArchiveItem[] = [
     title: 'Atlas de la Historia Física y Política de Chile',
     subtitle: 'Dos tomos con láminas litográficas coloreadas a mano de botánica, zoología y vistas costeras',
     category: 'libros',
-    categoryLabel: 'Libros Raros & Primeras Ediciones',
+    categoryLabel: 'Libros Raros & Manuscritos Iluminados',
     century: 'Siglo XIX',
     year: '1854',
     author: 'Claudio Gay',
@@ -114,7 +202,7 @@ export const ARCHIVE_ITEMS: ArchiveItem[] = [
     title: 'Desolación — Primera Edición con Dedicatoria Autógrafa',
     subtitle: 'Edición del Instituto de las Españas en los Estados Unidos (Nueva York, 1922)',
     category: 'libros',
-    categoryLabel: 'Libros Raros & Primeras Ediciones',
+    categoryLabel: 'Libros Raros & Manuscritos Iluminados',
     century: 'Siglo XX',
     year: '1922',
     author: 'Gabriela Mistral (Lucila Godoy Alcayaga)',
@@ -162,7 +250,8 @@ export const ARCHIVE_ITEMS: ArchiveItem[] = [
       ]
     },
     audioNarrative: 'Pedro Lira despliega en este retrato la maestría del claroscuro y la dignidad solemne de la sociedad chilena de fines del siglo XIX.',
-    tags: ['Pintura', 'Óleo', 'Maestros Chilenos', 'Pedro Lira', 'Siglo XIX']
+    tags: ['Pintura', 'Óleo', 'Maestros Chilenos', 'Pedro Lira', 'Siglo XIX'],
+    featured: true
   },
   {
     id: 'art-002',
@@ -245,7 +334,8 @@ export const ARCHIVE_ITEMS: ArchiveItem[] = [
       ]
     },
     audioNarrative: 'Este bando original de 1818 constituye el acta de nacimiento de la República de Chile, con el sello intacto en lacre de la Patria Nueva.',
-    tags: ['Independencia', 'O\'Higgins', 'República', 'Lacre', 'Manuscrito']
+    tags: ['Independencia', 'O\'Higgins', 'República', 'Lacre', 'Manuscrito'],
+    featured: true
   },
   {
     id: 'man-002',
@@ -301,7 +391,8 @@ export const ARCHIVE_ITEMS: ArchiveItem[] = [
       ]
     },
     audioNarrative: 'La Remington Standard Número 2 es una joya de la ingeniería mecánica del siglo diecinueve, portadora del inicio de la era tipográfica moderna.',
-    tags: ['Remington', 'Mecanismo', 'Siglo XIX', 'QWERTY', 'Tecnología']
+    tags: ['Remington', 'Mecanismo', 'Siglo XIX', 'QWERTY', 'Tecnología'],
+    featured: true
   },
   {
     id: 'maq-002',
@@ -373,9 +464,9 @@ export const TIMELINE_ERAS: TimelineEra[] = [
     era: 'Colonia & Virreinato',
     period: '1600 – 1810',
     title: 'Las Raíces Documentales del Reino de Chile',
-    description: 'Crónicas jesuitas, cartografía temprana y ediciones príncipes que testimonian el encuentro cultural y la fundación de las ciudades chilenas.',
-    piecesCount: 14,
-    highlightItem: 'Histórica Relación del Reyno de Chile (1646)'
+    description: 'Crónicas jesuitas, códices iluminados, tibores de Talavera y cartografía temprana que testimonian el florecimiento cultural y la fundación de las ciudades chilenas.',
+    piecesCount: 18,
+    highlightItem: 'Misal Iluminado (1600) & Urna Barroca Colonial (1720)'
   },
   {
     era: 'Independencia & Patria Nueva',
@@ -389,16 +480,16 @@ export const TIMELINE_ERAS: TimelineEra[] = [
     era: 'Expansión Republicana & Siglo XIX',
     period: '1830 – 1900',
     title: 'Ciencia, Arte y Modernización Institucional',
-    description: 'El Atlas de Claudio Gay, óleos maestros de Pedro Lira y las primeras máquinas de escribir que modernizaron las leyes de la Nación.',
-    piecesCount: 38,
-    highlightItem: 'Atlas de Claudio Gay & Remington No. 2'
+    description: 'El Atlas de Claudio Gay, óleos maestros de Pedro Lira, instrumental náutico de Magallanes y las primeras máquinas de escribir que modernizaron las leyes de la Nación.',
+    piecesCount: 42,
+    highlightItem: 'Retrato de Pedro Lira & Remington Standard No. 2'
   },
   {
     era: 'Siglo XX & Círculo de las Letras',
     period: '1900 – 1960',
-    title: 'Vanguardias Literarias y Maestros de la Pintura',
+    title: 'Vanguardias Literarias y Grandes Pintores',
     description: 'Primeras ediciones de los Premios Nobel chilenos con dedicatorias manuscritas y obras cumbres del paisaje matérico.',
-    piecesCount: 29,
+    piecesCount: 31,
     highlightItem: 'Desolación de Gabriela Mistral (1922)'
   }
 ];

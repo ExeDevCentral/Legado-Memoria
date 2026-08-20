@@ -6,6 +6,7 @@ export function ArchiveNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
+    { name: 'Vitrina 3D', href: '#vitrina', icon: Landmark },
     { name: 'Catálogo Patrimonial', href: '#catalogo', icon: BookOpen },
     { name: 'Cronología Histórica', href: '#cronologia', icon: Clock },
     { name: 'El Legado & Misión', href: '#legado', icon: Landmark },
