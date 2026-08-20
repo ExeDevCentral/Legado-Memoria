@@ -1,55 +1,48 @@
-import { ArchiveNavbar } from './components/sections/ArchiveNavbar';
-import { ArchiveHero } from './components/sections/ArchiveHero';
-import { InteractiveVitrine } from './components/sections/InteractiveVitrine';
-import { ArchiveCatalog } from './components/sections/ArchiveCatalog';
-import { HistoricalTimeline } from './components/sections/HistoricalTimeline';
-import { CuratorialPhilosophy } from './components/sections/CuratorialPhilosophy';
-import { DonationProtocol } from './components/sections/DonationProtocol';
-import { InstitutionalContact } from './components/sections/InstitutionalContact';
-import { ArchiveFooter } from './components/sections/ArchiveFooter';
-import { AccessibilityToolbar } from './components/ui/AccessibilityToolbar';
-import { MuseumAmbient } from './components/effects/MuseumAmbient';
+import { useState } from 'react';
+import { AppColeccion } from './versiones/v2-coleccion-patrimonial/AppColeccion';
+import { AppTaller } from './versiones/v1-taller-restauracion/AppTaller';
+import { Layers, Landmark, Wrench } from 'lucide-react';
 
 export default function App() {
+  // Version 2 (Colección Patrimonial) activa por defecto
+  const [version, setVersion] = useState<'v2' | 'v1'>('v2');
+
   return (
-    <div className="min-h-screen bg-[#FAF6F0] text-[#1C1917] flex flex-col font-serif selection:bg-[#D4AF37]/30 selection:text-[#1C1917] relative">
-      {/* Golden Museum Dust Motes & Gallery Atmosphere */}
-      <MuseumAmbient />
-
-      {/* Senior Accessibility Floating Controls (+80 años) */}
-      <AccessibilityToolbar />
-
-      {/* Sovereign Archival Header */}
-      <ArchiveNavbar />
-
-      {/* Main Exhibition Experience */}
-      <main className="flex-1">
-        {/* 1. Atmospheric Hero with 3D Floating Relics */}
-        <ArchiveHero />
-
-        {/* 2. Interactive 3D Vitrine with Curatorial Loupe & Lighting Switcher */}
-        <div id="vitrina">
-          <InteractiveVitrine />
+    <div className="relative">
+      {/* Selector discreto de versión para desarrollo/previsualización */}
+      <div className="fixed top-2 right-2 z-50 no-print opacity-75 hover:opacity-100 transition-opacity">
+        <div className="bg-[#1C1917]/90 text-white backdrop-blur-md px-3 py-1.5 rounded-full border border-[#D4AF37]/50 shadow-xl flex items-center gap-2 text-xs font-serif">
+          <Layers className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <span className="text-[#D8C7A5] font-sans text-[11px]">Versión:</span>
+          <button
+            onClick={() => setVersion('v2')}
+            className={`px-2.5 py-0.5 rounded-full text-[11px] font-cinzel font-bold transition-all cursor-pointer flex items-center gap-1 ${
+              version === 'v2'
+                ? 'bg-[#D4AF37] text-[#12100E] shadow-xs'
+                : 'text-[#D8C7A5] hover:text-white'
+            }`}
+            title="Versión 2: Colección Patrimonial & Donación Museográfica"
+          >
+            <Landmark className="w-3 h-3" />
+            <span>V2: Museo</span>
+          </button>
+          <button
+            onClick={() => setVersion('v1')}
+            className={`px-2.5 py-0.5 rounded-full text-[11px] font-sans transition-all cursor-pointer flex items-center gap-1 ${
+              version === 'v1'
+                ? 'bg-[#D4AF37] text-[#12100E] font-bold shadow-xs'
+                : 'text-[#D8C7A5] hover:text-white'
+            }`}
+            title="Versión 1: Taller de Restauración y Joyería GAM"
+          >
+            <Wrench className="w-3 h-3" />
+            <span>V1: Taller</span>
+          </button>
         </div>
+      </div>
 
-        {/* 3. Full Museum Catalog & Curatorial Records */}
-        <ArchiveCatalog />
-
-        {/* 4. Historical Timeline across 4 centuries */}
-        <HistoricalTimeline />
-
-        {/* 5. Curatorial Philosophy & Civic Legacy */}
-        <CuratorialPhilosophy />
-
-        {/* 6. Formal Donation Protocol for Museums */}
-        <DonationProtocol />
-
-        {/* 7. Direct Institutional Contact & Inquiry */}
-        <InstitutionalContact />
-      </main>
-
-      {/* Heritage Footer */}
-      <ArchiveFooter />
+      {/* Renderizado de la versión seleccionada */}
+      {version === 'v2' ? <AppColeccion /> : <AppTaller />}
     </div>
   );
 }
