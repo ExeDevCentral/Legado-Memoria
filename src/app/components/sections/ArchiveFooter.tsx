@@ -1,5 +1,6 @@
 import { Landmark, Shield, Phone, Mail, MapPin, ArrowUp } from 'lucide-react';
 import { INSTITUTIONAL_CONFIG } from '../../data/archiveData';
+import { CraftedBySignature } from '../ui/CraftedBySignature';
 
 export function ArchiveFooter() {
   const scrollToTop = () => {
@@ -100,6 +101,9 @@ export function ArchiveFooter() {
           </div>
         </div>
       </div>
+
+      {/* ExePaginasWeb Signature */}
+      <CraftedBySignature variant="dark" showBar className="mt-0" />
 
       {/* Bottom Bar */}
       <div className="border-t border-[#292524] bg-[#141210] py-6 px-4 text-center text-xs font-serif text-[#78716C]">
