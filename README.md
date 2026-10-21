@@ -1,98 +1,143 @@
-# Colección Patrimonial &amp; Archivo Histórico de Chile
+<div align="center">
 
-Catálogo, archivo y exposición digital de un fondo histórico chileno destinado a donación museográfica: libros antiguos ilustrados, obras de arte de grandes maestros, manuscritos republicanos, jarrones y cerámica colonial, y tecnología de época (máquinas de escribir).
+# Legado • Memoria
+### *Digital Cultural Heritage Archive, Museographic Cataloging & Archival Preservation Platform*
 
-Plataforma web tipo museo con atmósfera curatorial, vitrina interactiva con lupa, línea de tiempo histórica, catálogo de piezas con estado de conservación y protocolo formal de donación a instituciones chilenas.
+[![Vite 6](https://img.shields.io/badge/Vite-6.3-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
+[![React 18](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-7.x_Strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Motion](https://img.shields.io/badge/Motion-12.2-FF0055?style=for-the-badge&logo=framer&logoColor=white)](https://motion.dev/)
+[![Vitest](https://img.shields.io/badge/Vitest-Property_Testing-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-## 🖥️ Stack tecnológico
+<p align="center">
+  <b>An archival-grade digital museum environment engineering high-fidelity artifact telemetry, conservation state taxonomy, interactive micro-optical inspection, and formal institutional donation protocol routing.</b>
+</p>
 
-- **React 18** + **TypeScript** + **Vite 6** (build)
-- **Tailwind CSS 4** (estilos utilitarios)
-- **Radix UI** (primitivas accesibles: acordeón, diálogos, tabs, tooltips, etc.)
-- **Motion** (animaciones y microinteracciones)
-- **lucide-react** (iconografía)
-- **Vitest** + **Testing Library** (tests)
+---
 
-## 📂 Estructura del proyecto
+</div>
+
+## 1. Abstract & Curatorial Taxonomy
+
+Cultural patrimony preservation demands digital environments capable of presenting fragile physical artifacts—rare illuminated manuscripts, classical paintings, Republican-era epistolary archives, colonial ceramics, and industrial mechanical artifacts—without fidelity loss or contextual flattening.
+
+**Legado Memoria** establishes a web-native digital museum platform combining rigorous archival taxonomies with modern WebGL-accelerated rendering and property-based verification:
+- **Curatorial Conservation Metrics:** Every archival node includes verified provenance, physical dimensions, material classification, conservation rating, and donor attribution.
+- **Micro-Optical Inspection Viewport:** Non-destructive high-resolution pan-zoom inspection simulating physical magnifying loupes over rare manuscripts.
+- **Formal Institutional Donation Protocol:** Structured workflows facilitating legal deaccession and donation routing to authenticated cultural institutions.
 
 ```
-src/
-  main.tsx                 # Punto de entrada
-  app/
-    App.tsx                # Composición de la página
-    components/
-      sections/            # Secciones del museo (Hero, Vitrina 3D, Catálogo,
-                           #   Línea temporal, Filosofía curatorial, Donación,
-                           #   Contacto institucional, Footer)
-      effects/             # Efectos visuales (grano, partículas, tilt, etc.)
-      ui/                  # Componentes de UI (Radix + shadcn)
-      figma/               # Imágenes con fallback
-    data/
-      archiveData.ts       # Catálogo de piezas patrimoniales
-    types/
-    utils/
+┌────────────────────────────────────────────────────────────────────────┐
+│                        ARCHIVAL INGESTION & DATASET                    │
+│   [Historical Provenance Meta] ──► [Conservation Grade Assessment]     │
+│   [High-DPI Photogrammetry]   ──► [Lossless Tile Cache Pipeline]       │
+└──────────────────────────────────┬─────────────────────────────────────┘
+                                   │
+                                   ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│               CURATORIAL ENGINE & TAXONOMY CLASSIFIER                  │
+│    • Category Vectors: Epistolary, Numismatic, Classical, Mechanical  │
+│    • Temporal Topology: Century / Epoch Chronological Interpolation   │
+│    • Conservation Indices: Mint ➔ Restored ➔ Stabilized ➔ Degraded     │
+└──────────────────────────────────┬─────────────────────────────────────┘
+                                   │
+         ┌─────────────────────────┴─────────────────────────┐
+         ▼                                                   ▼
+┌──────────────────────────────────┐        ┌──────────────────────────────────┐
+│      HIGH-FIDELITY VITRINE       │        │   INSTITUTIONAL TRANSFER PIPELINE│
+│   Micro-optical Pan & Magnifier  │        │   Formal Donation Intake Protocol│
+│   Hardware-accelerated Tilt & Grn│        │   Museum Archive Export Handlers │
+└──────────────────────────────────┘        └──────────────────────────────────┘
 ```
 
-## 🚀 Desarrollo local
+---
 
+## 2. Technical Architecture & Component Topology
+
+### 2.1. Optical Inspection Subsystem
+High-resolution plates are rendered with zero reflow:
+- Dynamic lens magnification calculates coordinate deltas relative to client pointer vectors.
+- Sub-pixel typography using classical serif pairings (`Cinzel`, `Cormorant Garamond`, `Libre Baskerville`) anchored by accessible UI primitives from Radix UI.
+
+### 2.2. Property-Based Testing with Fast-Check
+Archive sorting, temporal filtering, and conservation grade invariants are certified through generative property testing via `fast-check` and `vitest`:
+$$\forall \mathcal{A} \in \text{ArtifactCorpus}, \quad \text{Filter}(\mathcal{A}, \text{Criteria}) \subseteq \mathcal{A} \quad \land \quad \text{Idempotent}(\text{Sort}(\mathcal{A}))$$
+
+---
+
+## 3. Technology Stack & Architectural Dependencies
+
+| Layer | Technology | Specification / Architectural Utility |
+| :--- | :--- | :--- |
+| **Runtime & Build** | Vite 6 + Rollup | Instant HMR and tree-shaken static production bundles |
+| **UI Framework** | React 18 | Strict functional components with memoized state transitions |
+| **Typography & Theme** | Tailwind CSS v4 | CSS Variables design tokens and sub-pixel serif styling |
+| **Interactive Physics** | Motion 12.2 | Gesture-driven physical cards and micro-optical magnification |
+| **Primitives** | Radix UI | Accessible WAI-ARIA compliant dialogs, tabs, and tooltips |
+| **Quality Assurance** | Vitest + Fast-Check | Generative property-based testing and DOM assertions |
+
+---
+
+## 4. Systems Directory Hierarchy
+
+```text
+Coleccion-Patrimonial/
+├── public/                 # High-resolution photographic assets & metadata manifests
+├── src/
+│   ├── app/
+│   │   ├── App.tsx         # Curatorial composition root & section orchestration
+│   │   └── components/
+│   │       ├── sections/   # Hero, Virtual Vitrine, Catalog, Timeline & Protocols
+│   │       ├── effects/    # Film grain, particle systems, coordinate tilt handlers
+│   │       └── ui/         # Radix UI primitives & accessible dialog wrappers
+│   ├── data/
+│   │   └── archiveData.ts  # Master archival catalog & conservation telemetry
+│   ├── types/              # Domain interfaces & museum catalog schema definitions
+│   └── utils/              # Temporal sort algorithms & query filter operators
+└── guidelines/             # Curatorial guidelines & preservation criteria
+```
+
+---
+
+## 5. Development Runtime & Operational Lifecycle
+
+### Prerequisites
+- **Node.js**: $\ge 18.x$ LTS
+- **Package Manager**: `npm` $\ge 9.x$
+
+### Installation & Initialization
 ```bash
-# Instalar dependencias
+# Clone the repository
+git clone https://github.com/ExeDevCentral/Legado-Memoria.git
+cd Legado-Memoria
+
+# Install dependencies deterministically
 npm install
 
-# Servidor de desarrollo
+# Launch local development server
 npm run dev
+```
 
-# Build de producción
+### Static Analysis & Verification Suite
+```bash
+# Execute unit and property-based test harness
+npm test
+
+# Generate production distribution bundle
 npm run build
 
-# Preview del build
+# Preview production build locally
 npm run preview
-
-# Tests
-npm test
 ```
 
-## ☁️ Deploy (Vercel)
+---
 
-El proyecto está listo para desplegarse en Vercel. La configuración ya está incluida:
+## 6. License
 
-- `vercel.json` — framework Vite, `npm run build` como build command y `dist` como directorio de salida, con rewrites SPA.
-- El proyecto está vinculado a Vercel en la carpeta `.vercel/` (no versionada).
+Distributed under the **MIT License**. Created for non-profit cultural preservation and museum digitization.
 
-### Opción A — Importar desde Git (recomendado)
-
-1. Ve a [vercel.com/new](https://vercel.com/new) e importa el repo `ExeDevCentral/Legado-Memoria`.
-2. Vercel detectará automáticamente Vite (build: `npm run build`, output: `dist`).
-3. Click en **Deploy**.
-
-### Opción B — CLI
-
-```bash
-# Verificar estado de autenticación
-vercel whoami
-
-# Deploy de producción (si el proyecto ya está vinculado)
-vercel --prod
-```
-
-### Configuración confirmada
-
-| Campo | Valor |
-|-------|-------|
-| Framework | Vite |
-| Build command | `npm run build` |
-| Output directory | `dist` |
-| Install command | `npm install` |
-| Runtime | Node.js |
-
-## 📋 Checklist previo al deploy
-
-- [x] Build de producción correcto (`npm run build`)
-- [x] `vercel.json` con rewrites SPA para rutas
-- [x] `.vercel` en `.gitignore` (no se comparte)
-- [x] Metadatos SEO en `index.html` (título y descripción)
-- [x] Fuentes (Cinzel, Cormorant Garamond, Libre Baskerville) vía Google Fonts
-
-## 📄 Licencia
-
-Uso privado / institucional. Proyecto de difusión patrimonial sin fines de lucro.
+<div align="center">
+  <sub>Curated and preserved by <a href="https://github.com/ExeDevCentral">ExeDevCentral</a>.</sub>
+</div>
