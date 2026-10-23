@@ -118,3 +118,35 @@
     display: block !important;
   }
 }
+
+/* Mobile Museum Exhibition Enhancements */
+@media (max-width: 768px) {
+  :root {
+    --font-size: 15.5px;
+  }
+  .exhibit-card, .museum-card {
+    padding: 16px 14px !important;
+    border-radius: 12px !important;
+  }
+  .exhibit-image {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+  }
+  .museum-nav {
+    padding: 10px 14px !important;
+  }
+  button, .museum-btn {
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size: 14.5px;
+  }
+  h1, .hero-heading {
+    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+  }
+}
