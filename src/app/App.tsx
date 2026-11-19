@@ -12,7 +12,7 @@ import { MuseumAmbient } from './components/effects/MuseumAmbient';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#FAF6F0] text-[#1C1917] flex flex-col font-serif selection:bg-[#D4AF37]/30 selection:text-[#1C1917] relative">
+    <div className="min-h-screen pb-24 md:pb-0 bg-[#FAF6F0] text-[#1C1917] flex flex-col font-serif selection:bg-[#D4AF37]/30 selection:text-[#1C1917] relative">
       {/* Motas doradas de museo */}
       <MuseumAmbient />
 
