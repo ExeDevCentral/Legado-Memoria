@@ -132,6 +132,9 @@ npm run build
 npm run preview
 ```
 
+### Mobile Curatorial & Senior Accessibility Ergonomics (`< 768px`)
+- **Minimalist Mobile Bottom Dock**: Replaces floating accessibility pills on mobile viewports with a 5-action thumb-zone dock (`Vitrina`, `Catálogo`, `Donación`, `Letra A+`, `Llamar`), elevating the senior typography control panel (`bottom-24`) for zero overlap.
+
 ---
 
 ## 6. License
@@ -142,4 +145,4 @@ Distributed under the **MIT License**. Created for non-profit cultural preservat
   <sub>Curated and preserved by <a href="https://github.com/ExeDevCentral">ExeDevCentral</a>.</sub>
 </div>
 
-<!-- ExeDevCentral Audit & Quality Stamp: 2026-11-14 (Phase 10/10) -->
+<!-- ExeDevCentral Audit & Quality Stamp: 2026-11-19 (Mobile UX & Zero-Overlap Verification) -->
