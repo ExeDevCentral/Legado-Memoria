@@ -58,5 +58,12 @@
   },
   "overrides": {
     "vite": "6.3.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExeDevCentral/Legado-Memoria.git"
+  },
+  "homepage": "https://github.com/ExeDevCentral/Legado-Memoria",
+  "description": "Enfocado en la preservación cultural y el acto de donar y conservar la historia para futuras generaciones y museos.",
+  "license": "MIT"
 }
